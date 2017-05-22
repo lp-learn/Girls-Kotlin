@@ -2,6 +2,7 @@ package com.happy.girls
 
 import android.content.Context
 import android.support.design.widget.Snackbar
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
@@ -23,4 +24,7 @@ fun View.snackbar(messageRes: Int, duration: Int = Snackbar.LENGTH_SHORT) {
 }
 fun ImageView.displayUrl(url:String){
     Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(this)
+}
+fun Any.log(message: String) {
+    Log.e(this.javaClass.simpleName, message)
 }
