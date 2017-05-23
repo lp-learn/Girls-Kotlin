@@ -1,7 +1,10 @@
 package com.happy.girls.ui
 
+import android.annotation.TargetApi
+import android.app.ActivityOptions
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
@@ -16,6 +19,7 @@ import com.happy.girls.ui.girl.GirlContract
 import com.happy.girls.ui.girl.GirlPresenter
 import com.happy.girls.ui.girldetail.GirlDetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_girl.*
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity(), GirlContract.View{
@@ -77,10 +81,12 @@ class MainActivity : AppCompatActivity(), GirlContract.View{
         adapter.notifyDataSetChanged()
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private fun jump2GirlDetail(position: Int) {
         val intent = Intent(this,GirlDetailActivity::class.java)
         intent.putExtra("girlUrl",mData[position].url)
         startActivity(intent)
+        //startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this,img_girl,"girl").toBundle())
     }
     override fun showGirl(girls: MutableList<Girl>?) {
         if (girls!=null&&girls.size>0){
