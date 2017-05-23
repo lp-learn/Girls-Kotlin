@@ -8,6 +8,7 @@ import android.widget.ImageView
 import com.happy.girls.R
 import com.happy.girls.bean.Girl
 import com.happy.girls.displayUrl
+import kotlinx.android.synthetic.main.item_girl.view.*
 
 /**
  * Created by ChangQin on 2017/5/22 0022.
@@ -23,14 +24,14 @@ class GirlAdapter(var data: List<Girl> = ArrayList(), var itemClick: (View, Int)
         bindView(holder.itemView, position)
     }
 
-    private fun bindView(itemView: View?, position: Int) {
+    private fun bindView(itemView: View, position: Int) {
         val girl = data[position]
-        val imageView = itemView as ImageView
+        val imageView = itemView.img_girl
         imageView.displayUrl(girl.url)
         imageView.setOnClickListener { itemClick(itemView, position) }
     }
 
     override fun getItemCount(): Int = data.size
 
-    class GirlViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class GirlViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){}
 }
