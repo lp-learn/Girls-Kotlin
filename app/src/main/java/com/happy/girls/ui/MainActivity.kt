@@ -1,5 +1,6 @@
 package com.happy.girls.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,7 @@ import com.happy.girls.bean.Girl
 import com.happy.girls.ui.adapter.GirlAdapter
 import com.happy.girls.ui.girl.GirlContract
 import com.happy.girls.ui.girl.GirlPresenter
+import com.happy.girls.ui.girldetail.GirlDetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
@@ -76,7 +78,9 @@ class MainActivity : AppCompatActivity(), GirlContract.View{
     }
 
     private fun jump2GirlDetail(position: Int) {
-
+        val intent = Intent(this,GirlDetailActivity::class.java)
+        intent.putExtra("girlUrl",mData[position].url)
+        startActivity(intent)
     }
     override fun showGirl(girls: MutableList<Girl>?) {
         if (girls!=null&&girls.size>0){

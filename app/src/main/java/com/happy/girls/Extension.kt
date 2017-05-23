@@ -23,7 +23,7 @@ fun View.snackbar(messageRes: Int, duration: Int = Snackbar.LENGTH_SHORT) {
     Snackbar.make(this,messageRes,duration).show()
 }
 fun ImageView.displayUrl(url:String){
-    Glide.with(context).load(url).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(this)
+    Glide.with(context).load(url).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(this)
 }
 fun Any.log(message: String) {
     Log.e(this.javaClass.simpleName, message)
