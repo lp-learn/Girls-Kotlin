@@ -5,29 +5,18 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
-import com.happy.girls.NetWork.GirlService
 import com.happy.girls.R
 import com.happy.girls.bean.Girl
-import com.happy.girls.bean.Girls
-import com.happy.girls.log
 import com.happy.girls.ui.adapter.GirlAdapter
+import com.happy.girls.ui.girl.GirlContract
+import com.happy.girls.ui.girl.GirlPresenter
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import rx.Observable
-import rx.Subscriber
-import rx.android.schedulers.AndroidSchedulers
-import rx.exceptions.OnErrorThrowable
-import rx.internal.util.ActionSubscriber
-import rx.schedulers.Schedulers
 import java.util.ArrayList
 
-class MainActivity : AppCompatActivity(),GirlContract.View{
+class MainActivity : AppCompatActivity(), GirlContract.View{
 
     companion object {
         val GIRLS_BASE_URL = "http://gank.io/api/"
@@ -36,7 +25,7 @@ class MainActivity : AppCompatActivity(),GirlContract.View{
     var mPageIndex: Int = 1
     var loadMoreEnable:Boolean = true
     var mData = ArrayList<Girl>()
-    val mPresenter:GirlPresenter = GirlPresenter(this)
+    val mPresenter: GirlPresenter = GirlPresenter(this)
     lateinit var adapter: GirlAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

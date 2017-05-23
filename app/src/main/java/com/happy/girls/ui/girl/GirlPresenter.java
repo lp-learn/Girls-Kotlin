@@ -1,6 +1,4 @@
-package com.happy.girls.ui;
-
-import android.support.v7.view.menu.MenuView;
+package com.happy.girls.ui.girl;
 
 import com.happy.girls.bean.Girl;
 import com.happy.girls.bean.Girls;
