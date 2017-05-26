@@ -42,7 +42,8 @@ class GirlDetailActivity : AppCompatActivity() {
 
     private fun initToolBar() {
         setSupportActionBar(toolBar)
-        toolBar.alpha = 0f
+        toolBar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
+        toolBar.setNavigationOnClickListener { finish() }
     }
     private fun shy(): Boolean {
         AlertDialog.Builder(this)
@@ -54,7 +55,6 @@ class GirlDetailActivity : AppCompatActivity() {
                 .show()
         return true
     }
-    @TargetApi(Build.VERSION_CODES.N)
     private fun saveGirl(){
         //查看存储状态
         val storageState = Environment.getExternalStorageState()
